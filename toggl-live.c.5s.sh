@@ -1,14 +1,26 @@
 #!/bin/bash
 API_URL='https://api.track.toggl.com/api/v8'
-CONFIG_DIR_PATH=~/.config/toggl-argos-gnome-extension
+CONFIG_DIR_PATH=$( dirname -- "$( readlink -f -- "$0"; )" )
+VARIABLES_PATH="$CONFIG_DIR_PATH"/var
 
 TOKEN=`cat "$CONFIG_DIR_PATH"/config | jq --raw-output '.token'`
-projects_list=`cat "$CONFIG_DIR_PATH"/projects_list`
-tags_list=`cat "$CONFIG_DIR_PATH"/tags_list`
-selected_tags=`cat "$CONFIG_DIR_PATH"/selected_tags`
+projects_list=`cat "$VARIABLES_PATH"/projects_list`
+if [ $? -ne 0 ]
+then
+  bash "$CONFIG_DIR_PATH/sync_projects.sh"
+fi
+tags_list=`cat "$VARIABLES_PATH"/tags_list`
+selected_tags=`cat "$VARIABLES_PATH"/selected_tags`
 
 
 response=`curl -v -u "$TOKEN":api_token -X GET "$API_URL"/time_entries/current`
+curl_exit_code=$?
+
+if [ $curl_exit_code -ne 0 ]
+then
+  echo "No internet"
+  exit 0
+fi
 
 # Parsing the response
 get_name_by_pid () {
@@ -35,7 +47,8 @@ duration=`printf '%d:%02d:%02d' $((duration_secs/3600)) $((duration_secs%3600/60
 
 # echo Debug mode on
 # echo "---"
-# echo "$response"
+# echo "Response: $response"
+# echo "curl exit code: $curl_exit_code"
 # echo data: "$data"
 # echo time_entry_id: "$time_entry_id"
 # echo pid: "$pid"
