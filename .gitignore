@@ -1,2 +1,7 @@
 config
 var/*
+__pycache__/*
+
+dev.ipynb
+.idea
+.ipynb_checkpoints
