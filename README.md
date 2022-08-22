@@ -1,7 +1,7 @@
 # Rainbow track
 GNOME shell extension for smooth two-click time tracking with Toggl Track.
 
-Built with purpose of making time tracking on linux a smoother experience.
+Built with the purpose of making time tracking on Linux a smoother experience.
 
 Built on top of [Argos](https://github.com/p-e-w/argos).
 
@@ -21,7 +21,7 @@ Built on top of [Argos](https://github.com/p-e-w/argos).
 
 Known limitations:
 
-In the current version it is impossible to set tags or a description when starting a new timer. The only configurable 
+In the current version, it is impossible to set tags or a description when starting a new timer. The only configurable 
 property of the new timer is its project.
 
 # Installation
@@ -58,7 +58,7 @@ git clone "https://github.com/ArtemPt239/rainbow-track"
    ```
    2) [Obtain](#Obtaining-Toggl-Track-API-token-and-workplace-id) Toggl Track API token and workplace id
    
-   3) Add them to the config file created at the step 2.i
+   3) Add them to the config file created at step 2.i
 
 3) Create symlink from Argos directory (located at `~/.config/argos`) to the rainbow-track.py:
 ```
@@ -83,7 +83,7 @@ topbar, or `rainbow-track.r.1s.py` to place the extension button on the right si
 
 ### Obtaining workplace id:
 
-1) Go to bottom of the sidebar and click workspace icon
+1) Go to the bottom of the sidebar and click the workspace icon
 2) In the opened popup click "Manage Workspaces"
 
 ![](img/workplace_id_1-2.png)
