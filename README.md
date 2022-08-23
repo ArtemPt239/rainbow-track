@@ -65,7 +65,7 @@ git clone "https://github.com/ArtemPt239/rainbow-track"
 cd ~/.config/argos
 ln -s PATH_TO_THE_CLONNED_REPO/rainbow-track.py rainbow-track.c.1s.py
 ```
-Note: it is important to specify this exact name for the symlink, because Argos uses this name to determine update 
+Note: **it is important to specify this exact name for the symlink**, because Argos uses this name to determine update 
 frequency and position of the extension button on the topbar.
 Alternatively, you can name the symlink `rainbow-track.l.1s.py` to place the extension button on the left side of the 
 topbar, or `rainbow-track.r.1s.py` to place the extension button on the right side of the topbar.
