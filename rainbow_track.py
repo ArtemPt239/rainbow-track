@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import json
 import os
+import sys
 
 API_URL = 'https://api.track.toggl.com/api/v9'
 CONFIG_DIR_PATH = os.path.dirname(os.path.realpath(__file__))
@@ -10,10 +11,25 @@ number_of_runs_till_projects_sync = 60*60*12
 CONNECTION_STATUS_OK = 'ok'
 
 
-with open(f"{CONFIG_DIR_PATH}/config.json") as config_file:
-    config_json = json.load(config_file)
-    API_TOKEN = str(config_json["token"])
-    WORKPLACE_ID = int(config_json["workplace_id"])
+CONFIG_FILENAME = 'config.json'
+try:
+    with open(f"{CONFIG_DIR_PATH}/{CONFIG_FILENAME}") as config_file:
+        config_json = json.load(config_file)
+        API_TOKEN = str(config_json["token"])
+        WORKPLACE_ID = int(config_json["workplace_id"])
+except FileNotFoundError:
+    print("Config file not found")
+    print(f"Make sure that {CONFIG_FILENAME} exists")
+    sys.exit(1)
+except json.decoder.JSONDecodeError:
+    print("Could not parse the config file")
+    sys.exit(2)
+except KeyError as e:
+    print(f"Could not find key {e} in the config file")
+    sys.exit(3)
+except Exception as e:
+    print("Unexpected error:", e)
+    raise e
 
 
 def get_persistent_variable(file_name: str, default_value=None):
