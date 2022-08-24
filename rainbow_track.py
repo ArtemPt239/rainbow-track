@@ -10,7 +10,7 @@ number_of_runs_till_projects_sync = 60*60*12
 CONNECTION_STATUS_OK = 'ok'
 
 
-with open(f"{CONFIG_DIR_PATH}/config") as config_file:
+with open(f"{CONFIG_DIR_PATH}/config.json") as config_file:
     config_json = json.load(config_file)
     API_TOKEN = str(config_json["token"])
     WORKPLACE_ID = int(config_json["workplace_id"])

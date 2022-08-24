@@ -54,7 +54,7 @@ git clone "https://github.com/ArtemPt239/rainbow-track"
    1) Create config file
    ```
    cd PATH_TO_THE_CLONNED_REPO
-   cp config.default config
+   cp config.json.default config.json
    ```
    2) [Obtain](#Obtaining-Toggl-Track-API-token-and-workplace-id) Toggl Track API token and workplace id
    
