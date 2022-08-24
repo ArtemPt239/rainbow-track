@@ -29,7 +29,7 @@ except KeyError as e:
     sys.exit(3)
 except Exception as e:
     print("Unexpected error:", e)
-    raise e
+    sys.exit(4)
 
 
 def get_persistent_variable(file_name: str, default_value=None):
@@ -138,7 +138,7 @@ def sync_projects():
 
 
 def main():
-    run_number = int(get_persistent_variable('run_number', default_value=1))
+    run_number = int(get_persistent_variable('run_number', default_value=0))
 
     if run_number % number_of_runs_till_projects_sync == 0:
         run_number = 0
