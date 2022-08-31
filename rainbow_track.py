@@ -100,6 +100,15 @@ def build_output():
                f" -X POST {API_URL}/time_entries ; python3 {CONFIG_DIR_PATH}/sync_current_timer.py'"
                f" terminal=false refresh=true"))
 
+    print("---")
+    #
+    # print("Settings")
+
+    print((f"Sync projects manually | "
+           f"bash='python3 {CONFIG_DIR_PATH}/sync_projects.py'"
+           f" terminal=false refresh=true"))
+
+
 
 def make_api_request(resource_location: str):
     import requests
