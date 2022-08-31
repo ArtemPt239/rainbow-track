@@ -6,7 +6,7 @@ import sys
 API_URL = 'https://api.track.toggl.com/api/v9'
 CONFIG_DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 number_of_runs_till_sync = 5
-number_of_runs_till_projects_sync = 60*60*12
+number_of_runs_till_projects_sync = 60*60
 
 CONNECTION_STATUS_OK = 'ok'
 
@@ -140,12 +140,13 @@ def sync_projects():
 def main():
     run_number = int(get_persistent_variable('run_number', default_value=0))
 
-    if run_number % number_of_runs_till_projects_sync == 0:
-        run_number = 0
+    if run_number >= number_of_runs_till_projects_sync == 0:
         sync_projects()
+        run_number = 0
 
-    if run_number % number_of_runs_till_sync == 0:
+    if run_number >= number_of_runs_till_sync == 0:
         sync_current_timer()
+        run_number = 0
 
     save_persistent_variable(run_number + 1, 'run_number')
     build_output()
