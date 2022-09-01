@@ -149,11 +149,11 @@ def sync_projects():
 def main():
     run_number = int(get_persistent_variable('run_number', default_value=0))
 
-    if run_number >= number_of_runs_till_projects_sync == 0:
+    if run_number >= number_of_runs_till_projects_sync:
         sync_projects()
         run_number = 0
 
-    if run_number >= number_of_runs_till_sync == 0:
+    if run_number >= number_of_runs_till_sync:
         sync_current_timer()
         run_number = 0
 
