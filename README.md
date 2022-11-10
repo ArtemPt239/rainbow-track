@@ -19,10 +19,12 @@ Built on top of [Argos](https://github.com/p-e-w/argos).
 
 <img src="img/offline_indicator.png" width="300"/>
 
-Known limitations:
+### Known limitations:
 
-In the current version, it is impossible to set tags or a description when starting a new timer. The only configurable 
+- In the current version, it is impossible to set tags or a description when starting a new timer. The only configurable 
 property of the new timer is its project.
+
+- Internet connection is required for the extension to function
 
 # Installation
 
