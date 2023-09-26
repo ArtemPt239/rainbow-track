@@ -151,17 +151,18 @@ def sync_projects():
 
 
 def main():
-    run_number = int(get_persistent_variable('run_number', default_value=0))
-
-    if run_number >= number_of_runs_till_projects_sync:
+    run_counter_for_projects_list_sync = int(get_persistent_variable('run_counter_for_projects_list_sync', default_value=0))
+    if run_counter_for_projects_list_sync >= number_of_runs_till_projects_sync:
         sync_projects()
-        run_number = 0
+        run_counter_for_projects_list_sync = 0
+    save_persistent_variable(run_counter_for_projects_list_sync + 1, 'run_counter_for_projects_list_sync')
 
-    if run_number >= number_of_runs_till_sync:
+    run_counter_for_timer_sync = int(get_persistent_variable('run_counter_for_timer_sync', default_value=0))
+    if run_counter_for_timer_sync >= number_of_runs_till_sync:
         sync_current_timer()
-        run_number = 0
+        run_counter_for_timer_sync = 0
+    save_persistent_variable(run_counter_for_timer_sync + 1, 'run_counter_for_timer_sync')
 
-    save_persistent_variable(run_number + 1, 'run_number')
     build_output()
 
 
