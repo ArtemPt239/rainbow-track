@@ -68,9 +68,13 @@ def build_output():
         description = current_time_entry['description']
         description_string = f"({description})" if not (description is None or description == "") else ""
 
-        project = projects[str(current_time_entry['pid'])]
-        project_color = project['hex_color']
-        project_name = project['name']
+        if 'pid' in current_time_entry:
+            project = projects[str(current_time_entry['pid'])]
+            project_color = project['hex_color']
+            project_name = project['name']
+        else:
+            project_color = '#FFFFFF'
+            project_name = ''
 
         duration_in_seconds = int(datetime.now().timestamp() + current_time_entry['duration'])
         duration_string = f'{duration_in_seconds // 3600 :d}:{(duration_in_seconds % 3600) // 60 :02d}:{duration_in_seconds % 60 :02d}'
