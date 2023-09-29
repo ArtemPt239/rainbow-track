@@ -1,5 +1,5 @@
 # Rainbow track
-GNOME shell extension for smooth two-click time tracking with Toggl Track.
+GNOME shell extension for smooth two-click time tracking on linux with Toggl Track.
 
 Built with the purpose of making time tracking on Linux a smoother experience.
 
